@@ -349,7 +349,7 @@ void Output::DrawRhombus(Point P, GfxInfo RhombusGfxInfo, bool selected) const
 	pWind->DrawPolygon(A, B, 4, style);
 }
 
-void Output::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected) const
+void Output::DrawEllipse(Point P1, GfxInfo EllipseGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
@@ -364,14 +364,9 @@ void Output::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool select
 		style = FILLED;
 		pWind->SetBrush(EllipseGfxInfo.FillClr);
 	}
-	else if (EllipseGfxInfo.isInverted)
-	{
-		style = INVERTED;
-		pWind->SetBrush(EllipseGfxInfo.FillClr);
-	}
 	else
 		style = FRAME;
-	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+	pWind->DrawEllipse(P1.x - 100, P1.y - 50, P1.x + 100, P1.y + 50, style);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

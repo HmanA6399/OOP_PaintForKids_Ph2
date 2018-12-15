@@ -1,6 +1,13 @@
 #include "ApplicationManager.h"
-#include "Actions\AddRectAction.h"
-
+#include"Actions/AddRectAction.h"
+#include"Actions/AddElipseAction.h"
+#include"Actions/AddLineAction.h"
+#include"Actions/AddTriAction.h"
+#include"Actions/AddRhomAction.h"
+#include"Actions/SelectAction.h"
+#include"Actions/SaveAction.h"
+#include"Actions/LoadAction.h"
+#include"Figures/CFigure.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -30,7 +37,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
 	
-	///vvvvvvvvvvvvvviiiiiiiiiiiiiiipppppppppppppp
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
@@ -38,14 +44,39 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddRectAction(this);
 			break;
 
-		case DRAW_LINE:
-			///create AddLineAction here
+		case SELECT:
+			pAct = new SelectAction(this);
+			break;
 
+		case DRAW_LINE:
+			pAct = new AddLineAction(this);
+			break;
+
+		case DRAW_ELLIPSE:
+			pAct = new AddElipseAction(this);
+			break;
+
+		case DRAW_RHOMBUS:
+			pAct = new AddRhomAction(this);
+			break;
+
+		case DRAW_TRI:
+			pAct = new AddTriAction(this);
+			break;
+		
+		case SAVE : 
+			pAct = new SaveAction(this);
 			break;
 
 		case EXIT:
 			///create ExitAction here
 			
+			break;
+
+		case DRAWING_AREA:
+			for (int i = 0;i < FigCount;i++) {
+				FigList[i]->SetSelected(false);
+			}
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -60,28 +91,58 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
-
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
+
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;
+		FigList[FigCount++] = pFig;	
 }
+
+//Saving all Figures into a file
+void ApplicationManager::SaveAll(ofstream& svFile) const
+{
+	for (int i = 0; i < FigCount; ++i) {
+		FigList[i]->Save(svFile);
+	}
+}
+
+/*//Saving a Specific type of figures into a file
+void ApplicationManager::SaveType(ofstream& svFile, ) const
+{
+	for (int i = 0; i < FigCount; ++i) {
+		if(dynamic_cast<typ>())FigList[i]->Save(svFile);
+	}
+}
+*/
+
+//Loading File
+//void ApplicationManager()
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
-	///vvvvvvvvvvvvvviiiiiiiiiiiiiiipppppppppppppp
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 
 
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
+	CFigure*pFig = NULL;
+	Point UserPoint;
 
-	return NULL;
+	UserPoint.x = x;   UserPoint.y = y;
+	for (int i = 0;i < FigCount;i++) {
+		FigList[i]->SetSelected(false);
+	}
+
+	for (int i = 0;i < FigCount;i++) {
+		if (FigList[i]->isin(UserPoint))
+		pFig = FigList[i];
+	}
+	return pFig;
 }
 //==================================================================================//
 //							Interface Management Functions							//

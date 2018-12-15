@@ -2,6 +2,11 @@
 #define ADD_RECT_ACTION_H
 
 #include "Action.h"
+#include "..\Figures\CRectangle.h"
+#include "..\ApplicationManager.h"
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
+
 
 //Add Rectangle Action class
 class AddRectAction: public Action

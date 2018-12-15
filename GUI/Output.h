@@ -10,8 +10,6 @@ public:
 	Output();
 
 	window* CreateWind(int, int, int, int) const;
-	void CreateDrawColorToolBar() const;
-	void CreateFillClrToolBar() const;
 	//creates the application window
 	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
@@ -22,15 +20,14 @@ public:
 	void CreateColorToolBar(ActionType A, string& ActStr) const;
 	void ClearDrawArea() const;	//Clears the drawing area
 	void ClearToolbar() const;
-	//void ClearPlayToolbar() const;
 	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
 
 	///Make similar functions for drawing all other figure types.
 	void DrawLine(Point P1, Point P2, GfxInfo LINEGfxInfo, bool selected = false) const;
 	void DrawTriangle(Point P1, Point P2, Point p3, GfxInfo TRIGfxInfo, bool selected = false) const;
-	void Output::DrawRhombus(Point P, GfxInfo RhombusGfxInfo, bool selected) const;
-	void DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected = false) const;
+	void DrawRhombus(Point P, GfxInfo RhombusGfxInfo, bool selected) const;
+	void DrawEllipse(Point P1, GfxInfo EllipseGfxInfo, bool selected) const;
 
 
 

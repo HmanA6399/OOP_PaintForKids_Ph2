@@ -75,6 +75,21 @@ enum ColorMenuItems //The items of the Draw/Fill Color menu
 
 };
 
+enum TypeMenuItems //The items of the Type menu
+{
+	//Note: Items are ordered here as they appear in menu
+	//If you want to change the menu items order, change the order here
+
+	ITM_REC_TYP,
+	ITM_LINE_TYP,
+	ITM_ELIP_TYP,
+	ITM_TRI_TYP,
+	ITM_RHOM_TYP,
+
+	TYPE_ITM_COUNT ////no. of menu items ==> This should be the last line in this enum
+
+};
+
 __declspec(selectany) //This line to prevent "redefinition error"
 
 struct UI_Info	//User Interface Info.
