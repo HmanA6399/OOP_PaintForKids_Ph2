@@ -148,6 +148,42 @@
     <ClCompile Include="CMUgraphicsLib\colors.cpp">
       <Filter>CMUgraphicsLib</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddTriAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddRhomAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddLineAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddElipseAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\SelectAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CTri.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CRhom.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CLine.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CElipse.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\SaveTypeAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -235,6 +271,42 @@
       <Filter>Application Manager</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Actions\AddTriAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddRhomAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddLineAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddElipseAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SelectAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CTri.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CRhom.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CLine.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CElipse.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SaveTypeAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

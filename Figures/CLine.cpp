@@ -30,31 +30,39 @@ bool CLine::isin(Point p) {
 
 void CLine::Save(ofstream &OutFile)
 {
-	OutFile << 'L' << '\n'
+	OutFile << "L "
 		<< ID << " "
 		<< p1.x << " " << p1.y << " "
 		<< p2.x << " " << p2.y << " "
+/*		
 		<< FigGfxInfo.DrawClr.ucRed << " "
 		<< FigGfxInfo.DrawClr.ucGreen << " "
 		<< FigGfxInfo.DrawClr.ucBlue << " "
 		<< FigGfxInfo.FillClr.ucRed << " "
 		<< FigGfxInfo.FillClr.ucGreen << " "
 		<< FigGfxInfo.FillClr.ucBlue << " "
-		<< FigGfxInfo.isFilled
+*/
+		<< ColorString[(color)FigGfxInfo.DrawClr] << " "
+		<< (FigGfxInfo.isFilled ? ColorString[(color)FigGfxInfo.FillClr] : "NO_FILL") << " "
 		<< FigGfxInfo.BorderWdth
 		<< '\n';
 }
-void CLine::Load(ifstream &Infile)
+void CLine::Load(ifstream &InFile)
 {
+	// Read data from file and update object properties
+	// data are : ID, P1.x, p1.y, p2.x, p2.y, DrawClr, FillClr, BorderWdth
+	InFile >> this->ID >> this->p1.x >> this->p1.y >> this->p2.x >> this->p2.y;
+	string dCol, fCol;
+	InFile >> dCol >> fCol;
+	this->FigGfxInfo.DrawClr = StringColor[dCol]; //A map defined in DEFS.h that maps each string to the corresponding color
+	this->FigGfxInfo.FillClr = StringColor[fCol];
+	this->FigGfxInfo.isFilled = (fCol == "NO_FILL");
+	InFile >> this->FigGfxInfo.BorderWdth;
+}
 
-	Infile >> p1.x >> p1.y
-		>> p2.x >> p2.y
-		>> FigGfxInfo.DrawClr.ucRed
-		>> FigGfxInfo.DrawClr.ucGreen
-		>> FigGfxInfo.DrawClr.ucBlue
-		>> FigGfxInfo.FillClr.ucRed
-		>> FigGfxInfo.FillClr.ucGreen
-		>> FigGfxInfo.FillClr.ucBlue
-		>> FigGfxInfo.isFilled
-		>> FigGfxInfo.BorderWdth;
+void CLine::PrintInfo(Output* pOut)
+{
+	//Prints main info of a figure
+	string InfoString = "ID : " + to_string(ID) + " , Corner1 : (" + to_string(p1.x) + "," + to_string(p1.y) + " ) " + " , Corner2 : (" + to_string(p2.x) + "," + to_string(p2.y) + ")";
+	pOut->PrintMessage(InfoString);
 }

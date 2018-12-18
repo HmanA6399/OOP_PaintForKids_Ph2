@@ -1,3 +1,4 @@
+#pragma once
 #include"Action.h"
 #include "../Figures/CLine.h"
 #include "../ApplicationManager.h"

@@ -43,38 +43,40 @@ bool CRectangle::isin(Point p) {
 void CRectangle::Save(ofstream &OutFile)
 {
 
-	OutFile << 'R' << '\n'
+	OutFile << "R "
 		<< ID << " "
 		<< p1.x << " " << p1.y << " "
 		<< p2.x << " " << p2.y << " "
-		<< FigGfxInfo.DrawClr.ucRed << " "
+/*
+		<< FigGf-xInfo.DrawClr.ucRed << " "
 		<< FigGfxInfo.DrawClr.ucGreen << " "
 		<< FigGfxInfo.DrawClr.ucBlue << " "
 		<< FigGfxInfo.FillClr.ucRed << " "
 		<< FigGfxInfo.FillClr.ucGreen << " "
 		<< FigGfxInfo.FillClr.ucBlue << " "
-		<< FigGfxInfo.isFilled << " "
-		<< FigGfxInfo.BorderWdth << " "
+*/
+		<< ColorString[(color)FigGfxInfo.DrawClr] << " "
+		<< (FigGfxInfo.isFilled ? ColorString[(color)FigGfxInfo.FillClr] : "NO_FILL") << " "
+		<< FigGfxInfo.BorderWdth
 		<< '\n';
 
 }
 
-void CRectangle::Load(ifstream &Infile)
+void CRectangle::Load(ifstream &InFile)
 {
-	if (Infile.is_open())
-	{
-		int a, b, c, d;
-		Infile >> a >> b >> c >> d; 
-		cout << a << b << c << d;
-
-		/*Infile  >> Corner1.x >> Corner1.y
-				>> FigGfxInfo.DrawClr.ucRed
-				>> FigGfxInfo.DrawClr.ucGreen
-				>> FigGfxInfo.DrawClr.ucBlue
-				>> FigGfxInfo.FillClr.ucRed
-				>> FigGfxInfo.FillClr.ucGreen
-				>> FigGfxInfo.FillClr.ucBlue
-				>> FigGfxInfo.isFilled
-				>> FigGfxInfo.BorderWdth ;  */
-	}
+	// Read data from file and update object properties
+	// data are : ID, P1.x, p1.y, p2.x, p2.y, DrawClr, FillClr, BorderWdth
+	InFile >> this->ID >> this->p1.x >> this->p1.y >> this->p2.x >> this->p2.y;
+	string dCol, fCol;
+	InFile >> dCol >> fCol;
+	this->FigGfxInfo.DrawClr = StringColor[dCol]; //A map defined in DEFS.h that maps each string to the corresponding color
+	this->FigGfxInfo.FillClr = StringColor[fCol];
+	this->FigGfxInfo.isFilled = (fCol == "NO_FILL");
+	InFile >> this->FigGfxInfo.BorderWdth;
+}
+void CRectangle::PrintInfo(Output* pOut)
+{
+	//Prints main info of a figure
+	string InfoString = "ID : " + to_string(ID) + " , Corner1 : (" + to_string(p1.x) + "," + to_string(p1.y) + " ) " + " , Corner2 : (" + to_string(p2.x) + "," + to_string(p2.y) + ")";
+	pOut->PrintMessage(InfoString);
 }

@@ -8,13 +8,6 @@
 class SaveTypeAction : public Action
 {
 	ofstream saveFile;
-	enum figure {
-		REC,
-		LINE,
-		ELIPSE,
-		TRI,
-		RHOM
-	};
 
 public:
 	SaveTypeAction(ApplicationManager* pApp);

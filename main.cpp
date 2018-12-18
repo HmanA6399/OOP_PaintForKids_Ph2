@@ -15,7 +15,8 @@ int main()
 		AppManager.ExecuteAction(ActType);
 
 		//Update the interface
-		AppManager.UpdateInterface();	
+	//	if ( !ActType == LOAD )
+			AppManager.UpdateInterface(); //TODO :: MODIFY THIS	
 
 	} while(ActType != EXIT);
 	
