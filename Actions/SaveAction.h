@@ -1,6 +1,4 @@
-#ifndef SSAVE_ACTION_H
-#define SSAVE_ACTION_H
-
+#pragma once
 #include <fstream>
 #include "Action.h"
 #include "..\ApplicationManager.h"
@@ -13,6 +11,17 @@ class SaveAction: public Action
 	private:
 		ofstream saveFile;
 		string fileName;
+
+		map<color, string> ColorString = {
+			{RED, "RED"},
+			{BLUE, "BLUE"},
+			{GREEN, "GREEN"},
+			{BLACK, "BLACK"},
+			{WHITE, "WHITE"},
+			{LIGHTGOLDENRODYELLOW, "NO_FILL"},
+			{ {}, "NO_FILL"}
+		};
+
     public:
 
 	SaveAction(ApplicationManager *pApp);
@@ -21,4 +30,3 @@ class SaveAction: public Action
 
 	virtual void Execute();
 };
-#endif

@@ -19,6 +19,7 @@ public:
 
 	virtual void Save(ofstream &OutFile);
 	void CRectangle::Load(ifstream &Infile);
+	virtual void PrintInfo(Output* pOut);
 };
 
 #endif

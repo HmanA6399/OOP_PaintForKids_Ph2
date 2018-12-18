@@ -1,6 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include<map>
 #include "CMUgraphicsLib\CMUgraphics.h"
 
 //This file contains some global constants and definitions to be used in the project.
@@ -55,7 +56,6 @@ struct GfxInfo	//Graphical info of each figure (you may add more members)
 	color FillClr;	//Fill color of the figure
 	bool isFilled;	//Figure Filled or not
 	int BorderWdth;	//Width of figure borders
-	bool isInverted;
 };
 
 #endif

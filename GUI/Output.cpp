@@ -286,11 +286,6 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TRIGfxInfo, bool
 		style = FILLED;
 		pWind->SetBrush(TRIGfxInfo.FillClr);
 	}
-	else if (TRIGfxInfo.isInverted)
-	{
-		style = INVERTED;
-		pWind->SetBrush(TRIGfxInfo.FillClr);
-	}
 	else
 		style = FRAME;
 
@@ -329,11 +324,6 @@ void Output::DrawRhombus(Point P, GfxInfo RhombusGfxInfo, bool selected) const
 	if (RhombusGfxInfo.isFilled)
 	{
 		style = FILLED;
-		pWind->SetBrush(RhombusGfxInfo.FillClr);
-	}
-	else if (RhombusGfxInfo.isInverted)
-	{
-		style = INVERTED;
 		pWind->SetBrush(RhombusGfxInfo.FillClr);
 	}
 	else

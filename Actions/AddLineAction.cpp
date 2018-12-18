@@ -19,6 +19,7 @@ void AddLineAction::ReadActionParameters() {
 	LineGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
+	
 }
 
 void AddLineAction::Execute() {
@@ -27,5 +28,6 @@ void AddLineAction::Execute() {
 	CLine *l = new CLine(p1, p2, LineGfxInfo);
 
 	pManager->AddFigure(l);
+
 }
 

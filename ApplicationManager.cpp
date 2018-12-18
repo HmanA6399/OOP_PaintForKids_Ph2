@@ -1,13 +1,5 @@
 #include "ApplicationManager.h"
-#include"Actions/AddRectAction.h"
-#include"Actions/AddElipseAction.h"
-#include"Actions/AddLineAction.h"
-#include"Actions/AddTriAction.h"
-#include"Actions/AddRhomAction.h"
-#include"Actions/SelectAction.h"
-#include"Actions/SaveAction.h"
-#include"Actions/LoadAction.h"
-#include"Figures/CFigure.h"
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -68,6 +60,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SaveAction(this);
 			break;
 
+		case LOAD :
+			pAct = new LoadAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -99,27 +95,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+		FigList[FigCount++] = pFig;
 }
 
 //Saving all Figures into a file
 void ApplicationManager::SaveAll(ofstream& svFile) const
 {
+	svFile << FigCount << '\n';
 	for (int i = 0; i < FigCount; ++i) {
 		FigList[i]->Save(svFile);
 	}
 }
 
-/*//Saving a Specific type of figures into a file
-void ApplicationManager::SaveType(ofstream& svFile, ) const
-{
-	for (int i = 0; i < FigCount; ++i) {
-		if(dynamic_cast<typ>())FigList[i]->Save(svFile);
-	}
-}
-*/
-
-//Loading File
 //void ApplicationManager()
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
@@ -144,6 +131,16 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	}
 	return pFig;
 }
+
+//Clear the figure list
+void ApplicationManager::ClearFigureList()
+{
+	for (int i = 0; i < FigCount; i++)
+		delete FigList[i];
+	FigCount = 0;
+	this->UpdateInterface();
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

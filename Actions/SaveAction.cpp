@@ -8,9 +8,10 @@ void SaveAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Saving .. Please enter file name for saving then click an empty area");
+	pOut->PrintMessage("Saving .. Please enter file name for saving then press enter");
 	fileName = pIn->GetSrting(pOut);
-	//pOut->PrintMessage("Saving A Graph, Click on an empty area");	
+	pOut->ClearStatusBar();
+	if (fileName.find(".txt") == -1) fileName += ".txt";
 }
 
 void SaveAction::Execute()
@@ -18,5 +19,12 @@ void SaveAction::Execute()
 	ReadActionParameters();
 	
 	saveFile.open(fileName, ios::out);
-	pManager->SaveAll(saveFile);
+	if ( saveFile.is_open() ) {
+		saveFile << ColorString[UI.DrawColor] << " " << ColorString[UI.FillColor] << '\n';
+		pManager->SaveAll(saveFile);
+		saveFile.close();
+	}
+	else {
+		cout << "Problem Opening the file\n";
+	}
 }

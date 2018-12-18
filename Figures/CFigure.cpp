@@ -1,9 +1,13 @@
 #include "CFigure.h"
 
+int CFigure::figCnt = 0;
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	ID = figCnt++;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
 }
 
 void CFigure::SetSelected(bool s)
@@ -21,3 +25,5 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+CFigure::~CFigure()
+{}
